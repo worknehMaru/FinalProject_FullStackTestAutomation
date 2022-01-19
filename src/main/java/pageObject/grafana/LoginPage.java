@@ -8,13 +8,13 @@ public class LoginPage {
     @FindBy(how = How.NAME, using = "user")
     public WebElement txt_username;
 
-    @FindBy(how = How.ID, using = "current-password")
+    @FindBy(how = How.CSS, using = "input[placeholder='password']")
     public WebElement txt_password;
 
-    @FindBy(how = How.CSS, using = "button[class='css-1xivtx2-button']")
+    @FindBy(how = How.CSS, using = "button[type='submit']")
     public WebElement btn_login;
 
-    @FindBy(how = How.CSS, using = "button[class='css-1tbo7ox-button']")
+    @FindBy(how = How.CSS, using = "a[aria-label='Skip change password button']")
     public WebElement btn_skip;
 }
 

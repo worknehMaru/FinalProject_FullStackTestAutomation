@@ -7,9 +7,13 @@ import org.openqa.selenium.support.How;
 import java.util.List;
 
 public class ServerAdminMainPage {
-    @FindBy(how = How.XPATH, using = "//td[@class='width-4 text-center link-td']")
+    @FindBy(how = How.CSS, using = "tr[ng-repeat='user in ctrl.users']")
     public List<WebElement> rows;
 
-    @FindBy(how = How.XPATH, using = "//a[@class='css-aja5tg-button']")
+    @FindBy(how = How.CSS, using = "a[class='btn btn-primary']")
     public WebElement btn_newUser;
+
+    @FindBy(how = How.CSS, using = "input[ng-change='ctrl.getUsers()'")
+    public WebElement txt_searchUserFiled;
 }
+

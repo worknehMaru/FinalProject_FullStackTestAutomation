@@ -2,9 +2,19 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="sikulix-atid-college" />
+      <option name="name" value="Sikulix Repo ATID" />
+      <option name="url" value="https://atidcollege.co.il/downloads/libs" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Experitest.repo1" />
+      <option name="name" value="Experitest.repo1" />
+      <option name="url" value="http://repo.experitest.com:8010/Maven2/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

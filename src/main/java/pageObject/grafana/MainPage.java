@@ -8,9 +8,9 @@ import java.util.List;
 
 public class MainPage {
 
-    @FindBy(how = How.CSS, using = "h1[class='css-1aanzv4']")
+    @FindBy(how = How.CSS, using = "div[class='dashboard-header']")
     public WebElement head_welComeToGrafana;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='css-ke7iqf']")
+    @FindBy(how = How.XPATH, using = "//h1[@class='css-ke7iqf']")
     public List<WebElement> list_StepProgress;
 }

@@ -17,6 +17,6 @@ public class AddNewUserPage {
     @FindBy(how = How.NAME, using = "password")
     public WebElement txt_password;
 
-    @FindBy(how = How.XPATH, using = "//span[@class='css-1mhnkuh']")
+    @FindBy(how = How.CSS, using = "button[class='css-1emkf9f-button']")
     public WebElement btn_createUser;
 }
