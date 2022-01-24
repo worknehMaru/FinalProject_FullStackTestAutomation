@@ -13,6 +13,6 @@ public class CalculatorDesktopApp extends CommonOps {
     @Description("This Test verify The Addition Command")
     public void test01_verifyAdditionCommand(){
         DesktopFlows.calculateAddition();
-        Verifications.verifyTextInElement(calcMainPage.Filed_results, "9");
+        Verifications.verifyTextInElement(calcMainPage.Filed_results, "Display is 9");
     }
 }

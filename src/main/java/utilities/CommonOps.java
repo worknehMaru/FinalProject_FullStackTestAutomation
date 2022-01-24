@@ -129,36 +129,36 @@ public class CommonOps extends Base{
 
     @Deprecated
     public static void initDesktopApp(){
-        dc.setCapability("chromeOptions", getData("CalculatorApp"));
+        dc.setCapability("app",getData("CalculatorApp"));
         try {
-            driver  = new WindowsDriver(new URL(getData("AppiumServerDesktop")),dc);
+            driver = new WindowsDriver(new URL(getData("AppiumServerDesktop")),dc);
         } catch (Exception e) {
-            System.out.println("Can Not Connect to Appium Server, See details : " + e );
+            System.out.println("Can not connect to The appium Server, see details: " + e);
         }
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), TimeUnit.SECONDS);
         wait       = new WebDriverWait(driver,Long.parseLong(getData("Timeout")));
         ManagePages.initCalculator();
-        action     = new Actions(driver);
+
 
     }
 
-    @BeforeTest
-    public  void StartSession()  {
-     if (getData("PlatformName").equalsIgnoreCase("web"))
-         initBrowser(getData("BrowserName"));
-     else if(getData("PlatformName").equalsIgnoreCase("mobile"))
-       initMobile();
-     else if (getData("PlatformName").equalsIgnoreCase("api"))
-         initAPI();
-     else if (getData("PlatformName").equalsIgnoreCase("electron"))
-         initElectronApp();
-     else if(getData("PlatformName").equalsIgnoreCase("desktop"))
-         initDesktopApp();
-     else
-         throw new RuntimeException("Invalid Platform Name");
+    @BeforeClass
+    public void StartSession()  {
+        if (getData("PlatformName").equalsIgnoreCase("web"))
+            initBrowser(getData("BrowserName"));
+        else if(getData("PlatformName").equalsIgnoreCase("mobile"))
+            initMobile();
+        else if (getData("PlatformName").equalsIgnoreCase("api"))
+            initAPI();
+        else if (getData("PlatformName").equalsIgnoreCase("electron"))
+            initElectronApp();
+        else if(getData("PlatformName").equalsIgnoreCase("desktop"))
+            initDesktopApp();
+        else
+            throw new RuntimeException("Invalid Platform Name");
         softAssert = new SoftAssert();
         screen = new Screen();
-        action     = new Actions(driver);
+        ManageDB.openConnection(getData("DBURL"), getData("DBUserName"),getData("DBPassWord"));
 
     }
 
@@ -172,6 +172,7 @@ public class CommonOps extends Base{
     }
     @AfterMethod
     public void afterMethod(){
+        ManageDB.closeConnection();
         if (getData("PlatformName").equalsIgnoreCase("web"))
         driver.get(getData("Url"));
         else if(getData("PlatformName").equalsIgnoreCase("electron"))

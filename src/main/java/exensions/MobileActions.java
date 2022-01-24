@@ -38,6 +38,6 @@ public class MobileActions extends CommonOps {
     }
     @Step("Execute Script")
     public static void executeScript(String script) {
-        //mobileDriver.executeScript(script);
+       // mobileDriver.executeScript(script);
     }
 }

@@ -9,7 +9,7 @@ public class MainPage extends CommonOps {
     @FindBy(how = How.NAME, using = "One")
     public WebElement btn_one;
 
-    @FindBy(how = How.NAME, using = "One")
+    @FindBy(how = How.NAME, using = "Eight")
     public WebElement btn_eight;
 
     @FindBy(how = How.NAME, using = "Plus")

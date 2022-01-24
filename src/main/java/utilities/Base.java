@@ -13,8 +13,13 @@ import org.sikuli.script.Screen;
 import org.testng.asserts.SoftAssert;
 import pageObject.grafana.*;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 public class Base {
-    //General
+
+      //General
     protected static WebDriverWait wait;
     protected static Actions action;
     protected static SoftAssert softAssert;
@@ -26,6 +31,12 @@ public class Base {
     //Mobile
     protected static AppiumDriver mobileDriver;
     protected static DesiredCapabilities dc = new DesiredCapabilities();
+
+    //DB
+    protected static Connection con;
+    protected static Statement stmt;
+    protected static ResultSet rs;
+
 
 
     //Rest API

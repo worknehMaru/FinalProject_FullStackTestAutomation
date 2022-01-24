@@ -1,9 +1,12 @@
 package workFlows;
+import exensions.DBActions;
 import exensions.UIActions;
 import exensions.Verifications;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.CommonOps;
+
+import java.util.List;
 
 public class WebFlows extends CommonOps {
     @Step("Business Flow : Log in")
@@ -22,6 +25,17 @@ public class WebFlows extends CommonOps {
         UIActions.updateText(grafanaAddNewUserPage.txt_userName, userName);
         UIActions.updateText(grafanaAddNewUserPage.txt_password, password);
         UIActions.click(grafanaAddNewUserPage.btn_createUser);
+    }
+
+    //DataBase
+    @Step("Log in to grafana with DB credentials")
+    public static void loginDB(){
+        String query = "SELECT name, password FROM Employees1 WHERE id='3'";
+        List<String> cred = DBActions.credentials(query);
+        UIActions.updateText(grafanaLogin.txt_username, cred.get(0));
+        UIActions.updateText(grafanaLogin.txt_password, cred.get(1));
+        UIActions.click(grafanaLogin.btn_login);
+        UIActions.click(grafanaLogin.btn_skip);
     }
     @Step("Business Flow : Delete Last User")
     public static void deleteLastUser(){
