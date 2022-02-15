@@ -5,7 +5,7 @@
     <Timeout>5</Timeout>
 
     <!--General -->
-    <PlatformName>web</PlatformName>
+    <!--<PlatformName>DB</PlatformName> -->
 
     <!-- Web -->
     <BrowserName>chrome</BrowserName>

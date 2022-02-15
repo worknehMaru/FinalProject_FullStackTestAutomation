@@ -3,6 +3,7 @@
 <suite parallel="false"     name=" web Suite">
     <!-- Suite -->
     <test name="Web Tests" >
+        <parameter name="PlatformName" value="web"></parameter>
         <classes>
             <class name="sanity.GrafanaWeb"/>
         </classes>

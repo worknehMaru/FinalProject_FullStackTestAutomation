@@ -1,8 +1,6 @@
 package utilities;
 
 
-import com.google.common.util.concurrent.Uninterruptibles;
-import io.appium.java_client.MobileDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -20,7 +18,6 @@ import org.sikuli.script.Screen;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
-import pageObject.mortgage.MainPage;
 import workFlows.ElectronFlows;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -32,6 +29,14 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class CommonOps extends Base{
+    /*
+    ********************************************************************************************************************
+    Methode Name: getData
+    Methode Description: This Methode get the data from xml configuration file
+    Methode Parameters: String
+    Methode Return: String
+    ********************************************************************************************************************
+     */
     public static String getData (String nodeName)
     {
         File fxmFile;
@@ -138,21 +143,24 @@ public class CommonOps extends Base{
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), TimeUnit.SECONDS);
         wait       = new WebDriverWait(driver,Long.parseLong(getData("Timeout")));
         ManagePages.initCalculator();
+        driver.manage().window().maximize();
 
 
     }
 
     @BeforeClass
-    public void StartSession()  {
-        if (getData("PlatformName").equalsIgnoreCase("web"))
+    @Parameters({"PlatformName"})
+    public void StartSession(String PlatformName)  {
+        platform = PlatformName;
+        if (platform.equalsIgnoreCase("web"))
             initBrowser(getData("BrowserName"));
-        else if(getData("PlatformName").equalsIgnoreCase("mobile"))
+        else if(platform.equalsIgnoreCase("mobile"))
             initMobile();
-        else if (getData("PlatformName").equalsIgnoreCase("api"))
+        else if (platform.equalsIgnoreCase("api"))
             initAPI();
-        else if (getData("PlatformName").equalsIgnoreCase("electron"))
+        else if (platform.equalsIgnoreCase("electron"))
             initElectronApp();
-        else if(getData("PlatformName").equalsIgnoreCase("desktop"))
+        else if(platform.equalsIgnoreCase("desktop"))
             initDesktopApp();
         else
             throw new RuntimeException("Invalid Platform Name");
@@ -165,22 +173,22 @@ public class CommonOps extends Base{
     @AfterClass
     public  void CloseSession()
     {
-        if(!getData("PlatformName").equalsIgnoreCase("api")){
-            if (!getData("PlatformName").equalsIgnoreCase("mobile"))
+        if(!platform.equalsIgnoreCase("api")){
+            if (!platform.equalsIgnoreCase("mobile"))
                 driver.quit();
         }
     }
     @AfterMethod
     public void afterMethod(){
         ManageDB.closeConnection();
-        if (getData("PlatformName").equalsIgnoreCase("web"))
-        driver.get(getData("Url"));
-        else if(getData("PlatformName").equalsIgnoreCase("electron"))
+        if (platform.equalsIgnoreCase("web"))
+            driver.get(getData("Url"));
+        else if(platform.equalsIgnoreCase("electron"))
             ElectronFlows.emptyList();
     }
     @BeforeMethod
-    public void beforeMethod(Method method){
-        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+    public void beforeMethod(Method method ){
+        if(!platform.equalsIgnoreCase("api")) {
             try {
                 MonteScreenRecorder.startRecord(method.getName());
             } catch (Exception e) {

@@ -32,7 +32,7 @@ public class Listeners extends CommonOps implements ITestListener {
 
     public void onTestSuccess(ITestResult test) {
         System.out.println("------------ Test: " + test.getName() + " Passed ------------" + test.getName());
-        if (!getData("PlatformName").equalsIgnoreCase("api"))
+        if (!platform.equalsIgnoreCase("api"))
             //Stop recording
             try {
                 MonteScreenRecorder.stopRecord();
@@ -50,7 +50,7 @@ public class Listeners extends CommonOps implements ITestListener {
 
     public void onTestFailure(ITestResult test) {
         System.out.println("------------ Test " + test.getName() + " Failed, ------------");
-        if (!getData("PlatformName").equalsIgnoreCase("api"))
+        if (!platform.equalsIgnoreCase("api"))
             //Stop Recording
             try {
                 MonteScreenRecorder.stopRecord();
@@ -63,13 +63,13 @@ public class Listeners extends CommonOps implements ITestListener {
     //Taking screenshot when the test fail
     @Attachment(value = "Page Screen-Shot", type = "image/png")
     public byte[] saveScreenshot() {
-        if (!getData("PlatformName").equalsIgnoreCase("mobile"))
+        if (!platform.equalsIgnoreCase("mobile"))
             return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         //when I need run Mobile Test cases i need to delete line 69
         return new byte[0];
     }
 //        else
-        //return((TakesScreenshot)mobileDriver).getScreenshotAs(OutputType.BYTES);
-    }
+    //return((TakesScreenshot)mobileDriver).getScreenshotAs(OutputType.BYTES);
+}
 
 
