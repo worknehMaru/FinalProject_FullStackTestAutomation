@@ -25,10 +25,10 @@ public class TodoListElectronApp extends CommonOps {
         ElectronFlows.addNewTask("Lean How to Fuck the system");
         ElectronFlows.addNewTask("Lean How to Develop Automation With Java");
         ElectronFlows.addNewTask("Lean C sharp");
-//        ElectronFlows.addNewTask("Lean How To Read Amharic");
-//        ElectronFlows.addNewTask("Lean Hebrew");
-//        ElectronFlows.addNewTask("Lean Russian ");
-//        ElectronFlows.addNewTask("Lean How war suit");
+        ElectronFlows.addNewTask("Lean How To Read Amharic");
+        ElectronFlows.addNewTask("Lean Hebrew");
+        ElectronFlows.addNewTask("Lean Russian ");
+        ElectronFlows.addNewTask("Lean How war suit");
         Verifications.verifyNumber(ElectronFlows.getNumberOFTask(),4);
     }
 }
