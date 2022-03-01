@@ -56,6 +56,7 @@ Each of the applications has a few tests for demonstration purpose.
 Theses tests can be developed in a very simple way due to a lot of work with the infrastructure. [Sanity]
 
 Known Issues:
+
 Sometimes can be conflict with some dependencies the application are using. Hence, the project is for DEMO purpose ONLY.
 In production it should be divided in to several project that solved the conflicts dependencies 
 
