@@ -11,19 +11,19 @@ import org.openqa.selenium.support.How;
      */
 public class AddNewUserPage {
     @FindBy(how = How.NAME, using = "name")
-    public WebElement txt_name;
+    private WebElement txt_name;
 
     @FindBy(how = How.NAME, using = "email")
-    public WebElement txt_email;
+    private WebElement txt_email;
 
     @FindBy(how = How.NAME, using = "login")
-    public WebElement txt_userName;
+    private WebElement txt_userName;
 
     @FindBy(how = How.NAME, using = "password")
-    public WebElement txt_password;
+    private WebElement txt_password;
 
     @FindBy(how = How.CSS, using = "button[class='css-1emkf9f-button']")
-    public WebElement btn_createUser;
+    private WebElement btn_createUser;
 
      /*
     ########################################################################################
@@ -31,6 +31,30 @@ public class AddNewUserPage {
     cause the elements name suppose be private and not a public
     ########################################################################################
      */
+
+    public WebElement getTxt_name(){
+        return txt_name;
+    }
+
+    public WebElement getTxt_email(){
+        return txt_email;
+    }
+
+    public WebElement getTxt_userName(){
+        return txt_userName;
+    }
+
+    public WebElement getTxt_password(){
+        return txt_password;
+    }
+
+    public WebElement getBtn_createUser(){
+        return btn_createUser;
+    }
+
+
+
+    
 
 
 

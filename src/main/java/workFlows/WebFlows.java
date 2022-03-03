@@ -1,9 +1,9 @@
 package workFlows;
+
 import exensions.DBActions;
 import exensions.UIActions;
 import exensions.Verifications;
 import io.qameta.allure.Step;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import utilities.CommonOps;
 
 import java.util.List;
@@ -11,20 +11,20 @@ import java.util.List;
 public class WebFlows extends CommonOps {
     @Step("Business Flow : Log in")
     public static void login(String user, String password){
-        UIActions.updateText(grafanaLogin.txt_username, user);
-        UIActions.updateText(grafanaLogin.txt_password, password);
-        UIActions.click(grafanaLogin.btn_login);
-        UIActions.click(grafanaLogin.btn_skip);
+        UIActions.updateText(grafanaLogin.getTxt_username(), user);
+        UIActions.updateText(grafanaLogin.getTxt_password(), password);
+        UIActions.click(grafanaLogin.getBtn_login());
+        UIActions.click(grafanaLogin.getBtn_skip());
     }
     @Step("Business Flow : Create  New User")
     public static void createNewUser(String name, String email, String userName, String password)
     {
         UIActions.click(grafanaServerAdminMainPage.btn_newUser);
-        UIActions.updateText(grafanaAddNewUserPage.txt_name, name);
-        UIActions.updateText(grafanaAddNewUserPage.txt_email, email);
-        UIActions.updateText(grafanaAddNewUserPage.txt_userName, userName);
-        UIActions.updateText(grafanaAddNewUserPage.txt_password, password);
-        UIActions.click(grafanaAddNewUserPage.btn_createUser);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_userName(), name);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_email(), email);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_email(), userName);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_password(), password);
+        UIActions.click(grafanaAddNewUserPage.getBtn_createUser());
     }
 
     //DataBase
@@ -32,10 +32,10 @@ public class WebFlows extends CommonOps {
     public static void loginDB(){
         String query = "SELECT name, password FROM Employees1 WHERE id='3'";
         List<String> cred = DBActions.credentials(query);
-        UIActions.updateText(grafanaLogin.txt_username, cred.get(0));
-        UIActions.updateText(grafanaLogin.txt_password, cred.get(1));
-        UIActions.click(grafanaLogin.btn_login);
-        UIActions.click(grafanaLogin.btn_skip);
+        UIActions.updateText(grafanaLogin.getTxt_username(), cred.get(0));
+        UIActions.updateText(grafanaLogin.getTxt_password(), cred.get(1));
+        UIActions.click(grafanaLogin.getBtn_login());
+        UIActions.click(grafanaLogin.getBtn_skip());
     }
     @Step("Business Flow : Delete Last User")
     public static void deleteLastUser(){
