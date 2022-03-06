@@ -20,9 +20,9 @@ public class WebFlows extends CommonOps {
     public static void createNewUser(String name, String email, String userName, String password)
     {
         UIActions.click(grafanaServerAdminMainPage.btn_newUser);
-        UIActions.updateText(grafanaAddNewUserPage.getTxt_userName(), name);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_name(), name);
         UIActions.updateText(grafanaAddNewUserPage.getTxt_email(), email);
-        UIActions.updateText(grafanaAddNewUserPage.getTxt_email(), userName);
+        UIActions.updateText(grafanaAddNewUserPage.getTxt_userName(), userName);
         UIActions.updateText(grafanaAddNewUserPage.getTxt_password(), password);
         UIActions.click(grafanaAddNewUserPage.getBtn_createUser());
     }
