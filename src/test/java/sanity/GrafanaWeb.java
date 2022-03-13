@@ -1,6 +1,5 @@
 package sanity;
 
-import com.google.common.util.concurrent.Uninterruptibles;
 import exensions.UIActions;
 import exensions.Verifications;
 import io.qameta.allure.Description;
@@ -24,14 +23,14 @@ public class GrafanaWeb extends CommonOps {
     @Description("This Test Verifies the Default users ")
     public void test02_DefaultUsers()
     {
-        UIActions.mouseHover(grafanaLeftMenuPage.btn_server,grafanaServerAdminMenuPage.link_users);
+        UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(),grafanaServerAdminMenuPage.link_users);
         Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 1);
     }
     @Test(description = "Test03 - Verify Created NewUser", priority = 3)
     @Description("This Test Verifies if the user is created  ")
     public void test03_VerifyCreatedNewUser()
     {
-        UIActions.mouseHover(grafanaLeftMenuPage.btn_server,grafanaServerAdminMenuPage.link_users);
+        UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(),grafanaServerAdminMenuPage.link_users);
         WebFlows.createNewUser("maru", "maru@gmail.com", "maruG-unite", "1234");
         Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 2);
     }
@@ -39,7 +38,7 @@ public class GrafanaWeb extends CommonOps {
     @Description("This Test Verifies if the user is deleted  ")
     public void test04_VerifyUserDeletion()
     {
-        UIActions.mouseHover(grafanaLeftMenuPage.btn_server, grafanaServerAdminMenuPage.link_users);
+        UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(), grafanaServerAdminMenuPage.link_users);
         WebFlows.deleteLastUser();
         Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 1);
     }
@@ -59,7 +58,7 @@ public class GrafanaWeb extends CommonOps {
     @Description("This Test verifies Search user  by using data driven Testing ")
     public void Test07_verifySearchUser(String user, String shouldExist)
     {
-        UIActions.mouseHover(grafanaLeftMenuPage.btn_server, grafanaServerAdminMenuPage.link_users);
+        UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(), grafanaServerAdminMenuPage.link_users);
         WebFlows.SearchAndVerifyUser(user, shouldExist);
     }
 }
