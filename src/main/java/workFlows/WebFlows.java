@@ -40,8 +40,8 @@ public class WebFlows extends CommonOps {
     @Step("Business Flow : Delete Last User")
     public static void deleteLastUser(){
         UIActions.click(grafanaServerAdminMainPage.rows.get(grafanaServerAdminMainPage.rows.size()-1));
-        UIActions.click(grafanaEditUserPage.btn_deleteUser);
-        UIActions.click(grafanaEditUserPage.btn_confirmDeleteUser);
+        UIActions.click(grafanaEditUserPage.getBtn_deleteUser());
+        UIActions.click(grafanaEditUserPage.getBtn_confirmDeleteUser());
     }
 
     @Step("Business flow: Search and verify User")
