@@ -19,7 +19,7 @@ public class WebFlows extends CommonOps {
     @Step("Business Flow : Create  New User")
     public static void createNewUser(String name, String email, String userName, String password)
     {
-        UIActions.click(grafanaServerAdminMainPage.btn_newUser);
+        UIActions.click(grafanaServerAdminMainPage.getBtn_newUser());
         UIActions.updateText(grafanaAddNewUserPage.getTxt_name(), name);
         UIActions.updateText(grafanaAddNewUserPage.getTxt_email(), email);
         UIActions.updateText(grafanaAddNewUserPage.getTxt_userName(), userName);
@@ -39,18 +39,18 @@ public class WebFlows extends CommonOps {
     }
     @Step("Business Flow : Delete Last User")
     public static void deleteLastUser(){
-        UIActions.click(grafanaServerAdminMainPage.rows.get(grafanaServerAdminMainPage.rows.size()-1));
+        UIActions.click(grafanaServerAdminMainPage.getRows().get(grafanaServerAdminMainPage.getRows().size()-1));
         UIActions.click(grafanaEditUserPage.getBtn_deleteUser());
         UIActions.click(grafanaEditUserPage.getBtn_confirmDeleteUser());
     }
 
     @Step("Business flow: Search and verify User")
     public static void SearchAndVerifyUser(String user, String shouldExist){
-        UIActions.updateTextHuman(grafanaServerAdminMainPage.txt_searchUserFiled,  user);
+        UIActions.updateTextHuman(grafanaServerAdminMainPage.getTxt_searchUserFiled(),  user);
         if (shouldExist.equalsIgnoreCase("exist"))
-            Verifications.ExistenceOfElement(grafanaServerAdminMainPage.rows);
+            Verifications.ExistenceOfElement(grafanaServerAdminMainPage.getRows());
         else if (shouldExist.equalsIgnoreCase("not exist"))
-            Verifications.NonExistenceOfElement(grafanaServerAdminMainPage.rows);
+            Verifications.NonExistenceOfElement(grafanaServerAdminMainPage.getRows());
         else
             throw new RuntimeException(("Invalid expected out put in data driven testing, should be exist or not exist"));
     }
