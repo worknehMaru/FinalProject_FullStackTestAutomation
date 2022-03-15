@@ -24,7 +24,7 @@ public class GrafanaWeb extends CommonOps {
     public void test02_DefaultUsers()
     {
         UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(),grafanaServerAdminMenuPage.link_users);
-        Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 1);
+        Verifications.numbersOfElements(grafanaServerAdminMainPage.getRows(), 1);
     }
     @Test(description = "Test03 - Verify Created NewUser", priority = 3)
     @Description("This Test Verifies if the user is created  ")
@@ -32,7 +32,7 @@ public class GrafanaWeb extends CommonOps {
     {
         UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(),grafanaServerAdminMenuPage.link_users);
         WebFlows.createNewUser("maru", "maru@gmail.com", "maruG-unite", "1234");
-        Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 2);
+        Verifications.numbersOfElements(grafanaServerAdminMainPage.getRows(), 2);
     }
     @Test(description = "Test04 - Verify User Deletion", priority = 4)
     @Description("This Test Verifies if the user is deleted  ")
@@ -40,7 +40,7 @@ public class GrafanaWeb extends CommonOps {
     {
         UIActions.mouseHover(grafanaLeftMenuPage.getBtn_server(), grafanaServerAdminMenuPage.link_users);
         WebFlows.deleteLastUser();
-        Verifications.numbersOfElements(grafanaServerAdminMainPage.rows, 1);
+        Verifications.numbersOfElements(grafanaServerAdminMainPage.getRows(), 1);
     }
     @Test(description = "Test05 - verify Progress Steps", priority = 5)
     @Description("This Test Verifies the default progress are displayed ( using soft assertion")

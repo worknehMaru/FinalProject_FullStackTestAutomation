@@ -11,7 +11,7 @@ public class GrafanaWebDB extends CommonOps {
     @Description("This Test login with DB Credentials and verify the Main Header ")
     public void Test01_loginDBAndVerifyTitle() {
         WebFlows.loginDB();
-        Verifications.verifyTextInElement(grafanaMainPage.head_welComeToGrafana, "Welcome to Grafana");
+        Verifications.verifyTextInElement(grafanaMainPage.getHead_welComeToGrafana(), "Welcome to Grafana");
     }
 
 }
