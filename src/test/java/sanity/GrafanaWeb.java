@@ -17,7 +17,7 @@ public class GrafanaWeb extends CommonOps {
     public void test01_VerifyHeader()
     {
         WebFlows.login(getData("UserName"), getData("PassWord"));
-        Verifications.verifyTextInElement(grafanaMainPage.head_welComeToGrafana, "Welcome to Grafana");
+        Verifications.verifyTextInElement(grafanaMainPage.getHead_welComeToGrafana(), "Welcome to Grafana");
     }
     @Test(description = "Test02 - Default Users", priority = 2)
     @Description("This Test Verifies the Default users ")
@@ -46,7 +46,7 @@ public class GrafanaWeb extends CommonOps {
     @Description("This Test Verifies the default progress are displayed ( using soft assertion")
     public void Test05_verifyStepsProgress()
     {
-        Verifications.visibilityOfElements(grafanaMainPage.list_StepProgress);
+        Verifications.visibilityOfElements(grafanaMainPage.getList_StepProgress());
     }
     @Test(description = "Test06 - verify Avatar Icon", priority = 6)
     @Description("This Test Verifies the Avatar Image Using Sikuli tool")
