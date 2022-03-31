@@ -6,14 +6,39 @@ import org.openqa.selenium.support.How;
 
 public class ServerAdminMenuPage {
     @FindBy(how = How.XPATH, using = "//a[@href='/admin/users']")
-    public WebElement link_users;
+    private WebElement link_users;
 
     @FindBy(how = How.XPATH, using = "//a[@href='/admin/teams']")
-    public WebElement link_teams;
+    private WebElement link_teams;
 
     @FindBy(how = How.XPATH, using = "//a[@href='/admin/plugins']")
-    public WebElement link_plugins;
+    private WebElement link_plugins;
 
     @FindBy(how = How.XPATH, using = "//a[@href='/admin/orgs']")
-    public WebElement link_orgs;
+    private WebElement link_orgs;
+
+
+     /*
+    ########################################################################################
+    The get element method for possible to use those elements in other class
+    cause the elements name suppose be private and not a public
+    ########################################################################################
+     */
+
+    public WebElement getLink_users(){
+        return link_users;
+    }
+
+    public WebElement getLink_teams(){
+        return link_teams;
+    }
+
+    public WebElement getLink_plugins(){
+        return link_plugins;
+    }
+
+    public WebElement getLink_orgs(){
+        return link_orgs;
+    }
+
 }

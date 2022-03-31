@@ -8,14 +8,32 @@ import java.util.List;
 
 public class MainPage {
     @FindBy(how = How.CSS, using = "input[placeholder='Create a task']")
-    public WebElement txt_createTask;
+    private WebElement txt_createTask;
 
     @FindBy(how = How.XPATH, using = "//div[@class='view_2Ow90']")
-    public List<WebElement> list_tasks;
+    private List<WebElement> list_tasks;
 
     @FindBy(how = How.CLASS_NAME, using = "destroy_19w1q")
-    public WebElement btn_DeleteTaskButton;
+    private WebElement btn_DeleteTaskButton;
 
+     /*
+    ########################################################################################
+    The get element method for possible to use those elements in other class
+    cause the elements name suppose be private and not a public
+    ########################################################################################
+     */
+
+    public List<WebElement> getList_tasks(){
+        return list_tasks;
+    }
+
+    public WebElement getBtn_DeleteTaskButton(){
+        return  btn_DeleteTaskButton;
+    }
+
+    public WebElement getTxt_createTask(){
+        return txt_createTask;
+    }
 
 }
 
